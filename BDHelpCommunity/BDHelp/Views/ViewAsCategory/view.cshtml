@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FInal_Project.Models.UserQuestion>
+
+@{
+    ViewBag.Title = "view";
+}
+<head>
+    
+</head>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div>
+    <div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form>
+                <div class="question-body">
+                    @using FInal_Project.Models
+                    @{
+                        List<Category> cList = (List<Category>)ViewBag.CategoryName;
+                        foreach (Category cat in cList)
+                        {
+                            <h1>@cat.CategoryName</h1>
+                        }
+                    }
+                    
+                  
+                </div>
+                
+
+                @foreach (var item in Model)
+            {
+                    <script>
+                        function onClick() {
+                            location.href("Index", "Action");
+                        }
+                    </script>
+                    <div class="question-body">
+                        <h1><i class="fa fa-hand-o-right"></i>@Html.DisplayFor(model => item.QuestionHeader)</h1>
+                        <p>by <a href="#">ali ahmed1234</a></p>
+                        <p>@Html.DisplayFor(model => item.QuestionDate)</p>
+                        <p>@Html.DisplayFor(model => item.QuestionText).@Html.ActionLink("ViewQuestion", "../Question/ViewQuestion", new { id = item.QuestionId })</p>
+                        <div class="button-area">
+                            <div class="button-like">
+                                <button type="button" class="btn" id="like" onclick="location.href='@Url.Action("Like","Action",new {id=item.QuestionId })'"> <i class="fa fa-thumbs-up"></i> (@Html.DisplayFor(model => item.QuestionRating)) | Like</button>                                
+                                <button type="button" class="btn" onclick="onClick()"><i class="fa fa-thumbs-down"></i> Home</button>
+                                <button type="button" class="btn"><i class="fa fa-thumbs-down"></i> Unlike</button>
+                                <button type="button" class="btn"><i class="fa fa-comment"></i> Answers</button>
+                                <button type="button" class="btn"><i class="fa fa-comment"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+
+
+</div>
+
+

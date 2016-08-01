@@ -1,0 +1,58 @@
+/* ----------------------------------------------------
+												RESPONSIVE
+------------------------------------------------------- */
+
+
+@media (max-width: 1200px) {
+	.nav > li > a {
+		padding:1em 0.7em;
+	}
+}
+@media (min-width: 992px) {
+
+
+}
+
+@media (max-width: 768px) {
+	.bootstrap-select .dropdown-menu,
+	.appoform .btn-white,
+	.ui-widget-content {
+		width: 100%;
+	}
+	.appoform .btn-white {
+		margin-top: 10px;
+	}
+	#carousel-reviews .carousel-control {
+		display: none;
+	}
+	.service-style-2 .why-us img {
+		float:none;
+	}
+	.owl-prev {
+	  left: 0;
+	}
+	.owl-next {
+	  right: 0;
+	}
+	.grid img {
+		width: 100%;
+	}
+
+
+	.grid,
+	.shop-item,
+	.team-member,
+	.why-us {
+		margin-bottom: 30px;
+	}
+	.topbar .text-left,
+	.topbar .text-right {
+		text-align: center !important;
+		float:none;
+		font-size: 12px;
+	}
+	.contact-topnav span{
+	  display: block;
+		margin-bottom: 10px;
+	}
+}

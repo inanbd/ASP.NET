@@ -1,0 +1,53 @@
+﻿
+@model List<FInal_Project.Models.UserQuestion>
+
+@{
+    ViewBag.Title = "Search";
+}
+<link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Search</h2>
+<div>
+    <form method="post">
+        <div class="col-md-3">
+           
+                @Html.RadioButton("Question", 1)
+                @Html.Label("From Question")
+                <br/>
+                @Html.RadioButton("Answer", 1)
+                @Html.Label("From Answer")
+                <br/>
+                @Html.RadioButton("Article", 1)
+                @Html.Label("From Article")
+                <br/>
+                @Html.RadioButton("Category", 1)
+                @Html.Label("From From Category")
+
+
+        </div>
+        <div class="col-md-6">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+          
+                <div >
+                    @Html.Editor("txtSearch", new { htmlAttributes = new { @class = "form-control" } })
+                    <br/>
+                    <a class="btn btn-primary" href='@Url.Action("","")'><span class="glyphicon glyphicon-search"></span> Search</a>
+                    @Html.ValidationMessage( "Can't be empty", new { @class = "text-danger" })
+                    
+                </div>
+            <br/>
+            <div class="question-body">
+                <h1><i class="fa fa-hand-o-right"></i></h1>
+                <p>by <a href="#">ali ahmed</a></p>
+                <p></p>
+                <p></p>
+            </div>
+        <div class="col-md-3"></div>
+    </form>
+    
+</div>
+

@@ -1,0 +1,70 @@
+﻿@model FInal_Project.Models.UserQuestion
+@using FInal_Project.Models
+
+@{
+    ViewBag.Title = "ViewQuestion";
+}
+<head>
+   <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<br />
+<br />
+<br />
+<br />
+<br />
+<body>
+   <div class="col-md-2"></div>
+    <div class="col-md-8">
+    
+        <div class="question-body">
+            <h1><i class="fa fa-hand-o-right"></i>@Html.DisplayFor(model=>model.QuestionHeader)</h1>
+            <p>by <a href="#">ali ahmed</a></p>
+            <p>@Html.DisplayFor(model=>model.QuestionText)</p>
+            
+
+
+            <div class="button-area">
+                <div class="button-like">
+                    <button type="button" class="btn"><i class="fa fa-thumbs-up"></i> Like</button>
+                    <button type="button" class="btn"><i class="fa fa-thumbs-down"></i> Unlike</button>
+                    <button type="button" class="btn" onclick="location.href='@Url.Action("Answer","Question",new {id=Model.QuestionId })'"><i class="fa fa-comment"></i> Give Answer</button>
+                    <button type="button" class="btn" ><i class="fa fa-comment"></i> Share</button>
+                </div>
+            </div>
+        </div> 
+        <h4>Answers:</h4>
+        @{
+            List<Answer> ansList = (List<Answer>)ViewBag.Answers;
+            List<SelectListItem> ans = new List<SelectListItem>();
+            foreach (Answer an in ansList)
+            {
+                if (an.QuestionNo == (Model.QuestionId))
+                {
+                    <div class="question-body">
+                        @an.AnswerText
+                        <div class="button-area">
+                            <div class="button-like">
+                                <button type="button" class="btn"><i class="fa fa-thumbs-up"></i> Like</button>
+                                <button type="button" class="btn"><i class="fa fa-thumbs-down"></i> Unlike</button>
+                                <button type="button" class="btn" onclick="location.href='@Url.Action("Satisfy","Question",new {id=Model.QuestionId })'">Satisfy</button>
+                                <button type="button" class="btn"><i class="fa fa-comment"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        }
+        
+
+
+
+
+    </div>
+    <div class="col-md-2"></div>
+   
+   
+   
+   
+</body>
+

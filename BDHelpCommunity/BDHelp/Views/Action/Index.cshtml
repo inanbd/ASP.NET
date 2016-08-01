@@ -1,0 +1,257 @@
+﻿@model List<FInal_Project.Models.UserQuestion>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="BD COMMUNITY">
+    <meta name="author" content="ALI AHMED">
+    <meta name="keywords" content="BD COMMUNITY">
+    <title>BD COMMUNITY</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="section-warp question">
+            <div class="container clearfix">
+                <div class="question-content">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>Welcome to BD Help Community</h2>
+                            <p>এখানে আপনি শিক্ষা,প্রযুক্তি,ঠিকানা বা যেকোনো কিছু জানতে প্রশ্ন করতে পারবেন</p>
+                            <div class="clearfix"></div>
+                            <div class="button-group">
+                                <a class="button-style" href="@Url.Action("Register","Account")">Join Now</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        
+                            <form class="form-style" method="post" action="">
+                                <p>
+                                    <input name="title" type="text" class="question_title" value="Ask any question and you be sure find your answer ?" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+                                    <i class="fa fa-question-circle question-logo"></i>
+                                    <a class="ask-question" href='@Url.Action("btnAsk","Action")'><span>Ask Question</span></a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <section class="main-content container">
+            <div class="left-sidebar col-md-3">
+                <div class="content-area">
+                    <ul class="menu-profile">
+                        <li><a href="#" id="btnTopQuestion">Top Questions</a></li>
+                        <li><a href="~/Action/UnansweredQuestion">Unanswered Questions</a></li>
+                        <li><a href="~/Action/TopUnliked">Top Unliked Question</a></li>
+                        <li><a href="~/Action/SatisfiedQuestion">Satisfied Question</a></li>
+                        <li><a href="#">Recent Questions</a></li>
+                        <li><a href="#">Old Question</a></li>
+                    </ul>
+                </div>
+                <div class="content-area ">
+                    <ul>
+                        <li>Recent Queries</li>
+                        <li>Most Responses</li>
+                        <li>No answer</li>
+                        <li>Most Visit</li>
+                        <li>Most Vote</li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="col-md-6 question-post">
+                   
+                    <form>
+                        @foreach (var item in Model)
+                        {
+                            <div class="question-body">
+                                <h1><i class="fa fa-hand-o-right"></i>@Html.DisplayFor(model => item.QuestionHeader)</h1>
+                                <p>by <a href="#">ali ahmed</a></p>
+                                <p>@Html.DisplayFor(model=>item.QuestionDate)</p>
+                                <p>@Html.DisplayFor(model => item.QuestionText).@Html.ActionLink("ViewQuestion","../Question/ViewQuestion", new { id=item.QuestionId})</p>
+
+
+                                <div class="button-area">
+                                    <div class="button-like">
+                                        <button type="button" class="btn" onclick="location.href='@Url.Action("Like","Action",new { id = item.QuestionId})'"><i class="fa fa-thumbs-down"></i>(@Html.DisplayFor(model => item.QuestionRating)) Like</button> 
+                                    
+                                    <button type="button" class="btn" onclick="location.href='@Url.Action("Unlike","Action",new { id = item.QuestionId})'"><i class="fa fa-thumbs-down"></i>(@Html.DisplayFor(model => item.Unlike)) Unlike</button>                                                
+                                        <button type="button" class="btn"><i class="fa fa-comment"></i> Answers</button>
+                                        <button type="button" class="btn"><i class="fa fa-comment"></i> Share</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                         }
+
+
+                </form>
+                </div>
+
+                
+
+            <aside class="col-md-3">
+
+                <div class="content-area">
+                    @using (Html.BeginForm("MatchAny", "Search"))
+                    {
+                        <input type="text" name="message" id="txt" class="searchbox" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';">
+                        <input type="submit" class="btn"/>
+                    }
+                    <form action="">
+                        <input type="text" name="s" class="searchbox" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';">
+                        <button type="button" class="btn" onclick="location.href='@Url.Action("btnSearch","Action")'"><i class="fa fa-search"></i> Search</button>
+                        <a href="">&nbsp;Advanced Search</a>
+                    </form>
+                </div>
+
+                <div class="content-area ">
+                    <ul>
+                        <li>
+                            <h3 style="background-color:orangered">Top Peoples </h3>
+                        </li>
+                        @using FInal_Project.Models
+                        @{
+                            List<UserModel> userList = (List<UserModel>)ViewBag.User;
+                            List<SelectListItem> user = new List<SelectListItem>();
+                            foreach (UserModel us in userList)
+                            {
+                                string name;
+                                name = us.FirstName + " " + us.LastName +" ("+us.UserRating+")";                              
+                                <li> @Html.ActionLink(us.FirstName + " " + us.LastName + " (" + us.UserRating + ")", "ViewProfile",new { id=us.UserId})</li>                            
+                            }
+                        }                                           
+                    </ul>
+                </div>
+
+
+                <div class="content-area ">
+                    <ul>
+                        <li>
+                           <h3 style="background-color:orangered">Top Categories</h3> 
+                        </li>
+                        @using FInal_Project.Models
+                        @{
+                            List<Category> catList = (List<Category>)ViewBag.Categories;
+                            foreach (Category cat in catList)
+                            {
+                                <li>@Html.ActionLink(cat.CategoryName, "../ViewAsCategory/view", new { id = cat.CategoryId }) </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="content-area ">
+                    <ul>
+                        <li><h3 style="background-color:orangered">Recent Queries</h3></li>
+                      
+                        <li>Most Responses</li>
+                        <li>No answer</li>
+                        <li>Most Visit</li>
+                        <li>Most Vote</li>
+                    </ul>
+                </div>
+
+                <div class="content-area ">
+                    <ul>
+                        <li><h3>Recent Queries</h3></li>
+                        <li>Most Responses</li>
+                        <li>No answer</li>
+                        <li>Most Visit</li>
+                        <li>Most Vote</li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+        <section class="counter">
+            <div class="parallax-style" style="background-position: 50% 0px;">
+                <div class="bg-pattern">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 element-from-top" style="opacity: 1; top: 0px;">
+                                <h2 class="link">Some Interesting Facts</h2>
+                                <div class="section-title-bottom">
+                                    <span class="section-title-bottom-inner"></span>
+                                </div><!-- /.section-title-bottom -->
+                            </div><!-- /.col-lg-12 -->
+
+                            <ul class="review-count-container">
+
+                                <li class="col-sm-6 col-md-3">
+                                    <div class="review-count-hex">
+                                        <div class="review-count-hex-inner">
+                                            <span class="count-icon"><i class="fa fa-coffee"></i></span>
+                                            <span class="count-number counter">14213</span>
+                                            <span class="count-name">USERS</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="col-sm-6 col-md-3">
+                                    <div class="review-count-hex">
+                                        <div class="review-count-hex-inner">
+                                            <span class="count-icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                            <span class="count-number counter">323</span>
+                                            <span class="count-name">QUESTIONS</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="col-sm-6 col-md-3">
+                                    <div class="review-count-hex">
+                                        <div class="review-count-hex-inner">
+                                            <span class="count-icon"><i class="fa fa-users"></i></span>
+                                            <span class="count-number counter">175</span>
+                                            <span class="count-name">VIEWS</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="col-sm-6 col-md-3">
+                                    <div class="review-count-hex">
+                                        <div class="review-count-hex-inner">
+                                            <span class="count-icon"><i class="fa fa-trophy"></i></span>
+                                            <span class="count-number counter">99</span>
+                                            <span class="count-name">Awards Won</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul><!-- /.review-count-container -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container -->
+                </div><!-- /.bg-pattern -->
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+</body>
+</html>
+
