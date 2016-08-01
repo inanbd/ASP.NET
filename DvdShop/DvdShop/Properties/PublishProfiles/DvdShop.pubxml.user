@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\kaiza\Documents</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AddNewDvd.aspx">
+      <publishTime>07/12/2016 22:22:11</publishTime>
+    </File>
+    <File Include="Admin.aspx">
+      <publishTime>07/14/2016 11:20:26</publishTime>
+    </File>
+    <File Include="ApplicationInsights.config">
+      <publishTime>07/10/2016 22:13:34</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>07/10/2016 22:13:34</publishTime>
+    </File>
+    <File Include="bin/DvdShop.dll">
+      <publishTime>07/16/2016 03:26:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>12/07/2015 19:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>03/10/2016 14:26:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>03/09/2016 12:00:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>03/09/2016 11:57:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>06/15/2015 16:06:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/19/2015 10:19:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/19/2015 10:19:46</publishTime>
+    </File>
+    <File Include="Index.aspx">
+      <publishTime>07/12/2016 11:21:30</publishTime>
+    </File>
+    <File Include="Logout.aspx">
+      <publishTime>07/14/2016 11:17:00</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/10/2016 22:13:35</publishTime>
+    </File>
+    <File Include="RequestForADvd.aspx">
+      <publishTime>07/12/2016 10:06:06</publishTime>
+    </File>
+    <File Include="Requests.aspx">
+      <publishTime>07/12/2016 11:08:35</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>07/10/2016 22:13:35</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>07/10/2016 22:13:35</publishTime>
+    </File>
+    <File Include="SearchCustomer.aspx">
+      <publishTime>07/12/2016 11:20:27</publishTime>
+    </File>
+    <File Include="SearchDvd.aspx">
+      <publishTime>07/12/2016 11:02:33</publishTime>
+    </File>
+    <File Include="User.aspx">
+      <publishTime>07/14/2016 11:24:03</publishTime>
+    </File>
+    <File Include="ViewAllCustomers.aspx">
+      <publishTime>07/12/2016 08:39:14</publishTime>
+    </File>
+    <File Include="ViewAllDvd.aspx">
+      <publishTime>07/14/2016 10:56:16</publishTime>
+    </File>
+    <File Include="ViwAllDvdCust.aspx">
+      <publishTime>07/12/2016 10:40:48</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/16/2016 03:26:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
