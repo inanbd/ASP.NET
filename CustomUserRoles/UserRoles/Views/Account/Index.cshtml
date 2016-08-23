@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model UserRoles.ViewModels.AccountViewModel
+
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Login", "Account"))
+{
+    @ViewBag.Error
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.username)</td>
+            <td>@Html.TextBoxFor(model => model.username)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.password)</td>
+            <td>@Html.TextBoxFor(model => model.password)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Login" /></td>
+        </tr>
+    </table>
+    
+    
+}
