@@ -1,0 +1,38 @@
+﻿<table border="1" cellpadding="5">
+    
+    <tbody>
+    @foreach (System.Data.DataRow row in Model.Rows)
+    {
+  
+            <tr>
+                <td>
+                    <input idval="@(row["Id"].ToString())" id="checkbox-@(row["Id"].ToString())" class="checkbox-custom" name="checkbox-@(row["Id"].ToString())" type="checkbox">
+                    <label for="checkbox-@(row["Id"].ToString())" class="checkbox-custom-label">@row["Name"].ToString()</label>
+
+                </td>
+                <td>
+                    <label>@row["Id"].ToString()</label>
+                </td>
+                <td>
+                    <label>@row["FullName"].ToString()</label>
+                </td>
+                <td>
+                    <label>@row["MidName"].ToString()</label>
+                </td>
+                <td>
+                    <label>@row["FathersName"].ToString()</label>
+                <td>
+                    <label>@row["MothersName"].ToString()</label>
+                </td>
+                <td>
+                    <label>@row["BrothersName"].ToString()</label>
+                </td>
+                <td>
+                    <label>@row["SistersName"].ToString()</label>
+                </td>
+             
+               
+            </tr>
+        }
+    </tbody>
+</table>

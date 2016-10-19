@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JQueryDataTable</title>
+    <script src="~/scripts/JQuery.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": '/Home/JQueryDataTableResult',
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "FullName" },
+                    { "data": "MidName" },
+                    { "data": "FathersName" },
+                    { "data": "MothersName" },
+                    { "data": "BrothersName" },
+                    { "data": "SistersName" },
+                    {"data":"Picture"}
+                ],
+                'language': { loadingRecords: "Please wait - loading..." }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>FullName</th>
+            <th>MidName</th>
+            <th>FathersName</th>
+            <th>MothersName</th>
+            <th>BrothersName</th>
+            <th>SistersName</th>
+            <th>Picture</th>
+        </tr>
+    </thead>
+            <tfoot>
+        <tr>
+            <td>Id </td>
+            <td>Name</td>
+            <td>FullName</td>
+            <td>MidName</td>
+            <td>FathersName</td>
+            <td>MothersName</td>
+            <td>BrothersName</td>
+            <td>SistersName</td>
+            <th>Picture</th>
+        </tr>
+    </tfoot>
+        </table>
+         
+    </div>
+</body>
+</html>

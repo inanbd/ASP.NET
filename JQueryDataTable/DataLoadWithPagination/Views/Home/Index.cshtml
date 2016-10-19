@@ -1,0 +1,292 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="~/scripts/JQuery.js"></script>
+    <title>Index</title>
+    <style>
+        table{
+            margin-left:20%;
+        }
+        .name{
+            padding:10px;
+           
+        }
+        .id{
+            padding:10px;
+        }
+        /*#index-0{
+            display:none;
+        }*/
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th class="name">Name</th>
+                <th class="id">Id</th>
+                <th class="name">Name</th>
+                <th class="id">Id</th>
+                <th class="name">Name</th>
+                <th class="id">Id</th>
+                <th class="name">Name</th>
+                <th class="id">Id</th>
+
+            </tr>
+        </thead>
+    </table>
+    <div id="data">
+        @Html.Action("Select","Home", new { offset=0 ,orderby="Id", ascDesc ="asc"})
+
+    </div>
+    <div>
+       
+                    <span id="pageno">1</span>
+                    <span> out of </span>
+                    <span id="maxval">@ViewBag.rowCount</span>
+
+    </div>
+    <ul class="pagination">
+        <li id="previous" class="disabled"><a >Previous</a></li>
+        <li id="index-0"><a>...</a></li>
+        <li id="index-1"><a>1</a></li>
+        <li id="index-2"><a>2</a></li>
+        <li id="index-3"><a>3</a></li>
+        <li id="index-4"><a >4</a></li>
+        <li id="index-5"><a>5</a></li>
+        <li id="index-6"><a>...</a></li>
+        <li id="next"><a>Next</a></li>
+    </ul>
+    <script>
+        var selectedIndex = 1;
+        var maxval = 20;
+        var orderby="Id";
+        var ascdesc="ASC";
+
+        $(document).ready(function () {
+            $("#index-1").addClass("active");
+            maxval = $('#maxval').text();
+        });
+
+        $(".name").click(function () {
+            orderby = "Name";
+            if (ascdesc == "ASC") {
+                ascdesc = "DESC";
+            } else {
+                ascdesc = "ASC";
+            }
+            reloadIndex();
+            reloadData();
+            
+        });
+        $(".id").click(function () {
+            orderby = "Id";
+            if (ascdesc == "ASC") {
+                ascdesc = "DESC";
+            } else {
+                ascdesc = "ASC";
+            }
+            reloadIndex();
+            reloadData();
+            
+        });
+        $("#next").click(function () {
+
+            $("#previous").removeClass('disabled');
+            if (selectedIndex >= maxval) {
+                $("#next").addClass('disabled');
+
+                return;
+            }
+            selectedIndex++;
+            if (selectedIndex % 5 == 1 && selectedIndex > 5) {
+                loadNextIndex();
+                index1();
+            }
+
+            if (selectedIndex == 1) {
+                index1();
+            } else if (selectedIndex % 5 == 2) {
+                index2();
+            }
+            else if (selectedIndex % 5 == 3) {
+                index3();
+            }
+            else if (selectedIndex % 5 == 4) {
+                index4();
+            }
+            else if (selectedIndex % 5 == 0) {
+                index5();
+            }
+            reloadData();
+        });
+
+        $("#previous").click(function () {
+            $("#next").removeClass('disabled');
+            if (selectedIndex <= 1) {
+                return;
+            }
+            selectedIndex--;
+            if (selectedIndex % 5 == 0 && selectedIndex >= 5) {
+                loadPrevIndex();
+                index5();
+            }
+
+            if (selectedIndex % 5 == 1) {
+                index1();
+            } else if (selectedIndex % 5 == 2) {
+                index2();
+            }
+            else if (selectedIndex % 5 == 3) {
+                index3();
+            }
+            else if (selectedIndex % 5 == 4) {
+                index4();
+            }
+            else if (selectedIndex % 5 == 0) {
+                index5();
+            }
+
+            if (selectedIndex == 1) {
+                $("#previous").addClass('disabled');
+            }
+
+            reloadData();
+        });
+        $("#index-0").click(function () {
+            selectedIndex = $('#index-1 a').text();
+            selectedIndex--;
+            reloadData();
+            loadPrevIndex();
+            index5();
+        });
+        $("#index-1").click(function () {
+            selectedIndex = $('#index-1 a').text();
+            if (selectedIndex == 1) {
+                $("#previous").addClass('disabled');
+            }
+            reloadData();
+            index1();
+
+        });
+        $("#index-2").click(function () {
+            selectedIndex = $('#index-2 a').text();
+            reloadData();
+            index2();
+
+        });
+        $("#index-3").click(function () {
+            selectedIndex = $('#index-3 a').text();
+            reloadData();
+            index3();
+
+        });
+        $("#index-4").click(function () {
+            selectedIndex = $('#index-4 a').text();
+            reloadData();
+            index4();
+
+        });
+        $("#index-5").click(function () {
+            selectedIndex = $('#index-5 a').text();
+            reloadData();
+            index5();
+
+        });
+        $("#index-6").click(function () {
+            selectedIndex = $('#index-5 a').text();
+            selectedIndex++;
+            reloadData();
+            loadNextIndex();
+            index1();
+        });
+        function loadNextIndex() {
+            $('#index-1 a').text(selectedIndex);
+            $('#index-2 a').text(selectedIndex + 1);
+            $('#index-3 a').text(selectedIndex + 2);
+            $('#index-4 a').text(selectedIndex + 3);
+            $('#index-5 a').text(selectedIndex + 4);
+        }
+        function loadPrevIndex() {
+            $('#index-1 a').text(selectedIndex - 4);
+            $('#index-2 a').text(selectedIndex - 3);
+            $('#index-3 a').text(selectedIndex - 2);
+            $('#index-4 a').text(selectedIndex - 1);
+            $('#index-5 a').text(selectedIndex);
+        }
+        function reloadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("data").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "http://localhost:58728/Home/Select?offset=" + ((selectedIndex * 10) - 10) + "&&orderby=" + orderby + "&&ascDesc=" + ascdesc, true);
+
+            document.getElementById("pageno").innerHTML = selectedIndex;
+            xhttp.send();
+        }
+        function index1() {
+
+            $("#index-1").addClass("active");
+            $("#index-2").removeClass("active");
+            $("#index-3").removeClass("active");
+            $("#index-4").removeClass("active");
+            $("#index-5").removeClass("active");
+        };
+        function index2() {
+            $("#previous").removeClass('disabled');
+            $("#index-1").removeClass("active");
+            $("#index-2").addClass("active");
+            $("#index-3").removeClass("active");
+            $("#index-4").removeClass("active");
+            $("#index-5").removeClass("active");
+        };
+        function index3() {
+            $("#previous").removeClass('disabled');
+            $("#index-1").removeClass("active");
+            $("#index-2").removeClass("active");
+            $("#index-3").addClass("active");
+            $("#index-4").removeClass("active");
+            $("#index-5").removeClass("active");
+        };
+        function index4() {
+            $("#previous").removeClass('disabled');
+            $("#index-1").removeClass("active");
+            $("#index-2").removeClass("active");
+            $("#index-3").removeClass("active");
+            $("#index-4").addClass("active");
+            $("#index-5").removeClass("active");
+        };
+        function index5() {
+            $("#previous").removeClass('disabled');
+            $("#index-1").removeClass("active");
+            $("#index-2").removeClass("active");
+            $("#index-3").removeClass("active");
+            $("#index-4").removeClass("active");
+            $("#index-5").addClass("active");
+        };
+        function reloadIndex() {
+            selectedIndex = 1;
+            index1();
+            $("#index-1 a").text("1");
+            $("#index-2 a").text("2");
+            $("#index-3 a").text("3");
+            $("#index-4 a").text("4");
+            $("#index-5 a").text("5");
+            $("#previous").addClass('disabled');
+            $("#next").removeClass('disabled');
+        };
+
+
+    </script>
+</body>
+</html>
